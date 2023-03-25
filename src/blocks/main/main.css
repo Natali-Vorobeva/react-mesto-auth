@@ -1,0 +1,10 @@
+.main {
+  flex: 1;
+}
+
+@media (max-width:981px){
+  .main {
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+}

@@ -1,0 +1,26 @@
+.personal-page__about {
+  font-style: normal;
+  font-weight: 400;
+  font-size: calc(14px + (18 - 14) * ((100vw - 320px) / (1280 - 320)));
+  font-size: 18px;
+  line-height: 1.22;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 336px;
+}
+
+@media (max-width:768px){
+  .personal-page__about {
+    align-self: center;
+  }
+}
+
+@media (max-width:425px){
+  .personal-page__about {
+    padding-top: 5px;
+    font-size: 14px;
+    max-width: 282px;
+  }
+}

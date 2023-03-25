@@ -1,0 +1,26 @@
+.personal-page__username {
+  position: relative;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 1.4;
+  margin: 0;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media (max-width:897px){
+  .personal-page__username {
+    font-size: calc(27px + (42 - 27) * ((100vw - 320px) / (897 - 320)));
+    align-self: center;
+  }
+}
+
+@media (max-width:425px){
+  .personal-page__username {
+    display: block;
+    max-width: 191px;
+  }
+}

@@ -1,0 +1,9 @@
+.gallery__button-favourites {
+  position: relative;
+  width: 28px;
+  transition: all .4s ease;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  display: flex;
+}

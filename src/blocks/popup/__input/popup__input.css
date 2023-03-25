@@ -1,0 +1,21 @@
+.popup__input {
+  outline: none;
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  width: 100%;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 27px;
+  min-height: 28px;
+  padding:0;
+}
+
+@media (max-width:425px){
+  .popup__input {
+    min-height: 32px;
+    margin-bottom: 25px;
+  }
+}

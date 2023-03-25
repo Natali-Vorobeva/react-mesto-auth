@@ -1,0 +1,14 @@
+.personal-page__account {
+  position: relative;
+  display: flex;
+  column-gap: 10px;
+  max-width: 336px;
+  justify-self: center;
+  justify-content: space-between;
+}
+
+@media (max-width:768px){
+  .personal-page__account {
+    align-self: center;
+  }
+}

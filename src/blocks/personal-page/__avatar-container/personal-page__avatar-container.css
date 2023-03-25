@@ -1,0 +1,10 @@
+.personal-page__avatar-container {
+  display: flex;
+  cursor: pointer;
+}
+
+@media (max-width:768px){
+  .personal-page__avatar-container {
+  justify-content: center;
+  }
+}

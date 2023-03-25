@@ -1,0 +1,9 @@
+.gallery__image {
+  width: 100%;
+  min-height: 282px;
+  aspect-ratio: 1;
+  border: none;
+  display: block;
+  cursor: pointer;
+  object-fit: cover;
+}

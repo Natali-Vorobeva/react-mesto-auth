@@ -1,0 +1,8 @@
+.gallery__card-body {
+  position: relative;
+  min-width: 282px;
+  margin: 0;
+  border-radius: 10px;
+  overflow: hidden;
+	text-decoration: none;
+}

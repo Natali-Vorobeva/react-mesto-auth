@@ -1,0 +1,11 @@
+.gallery__image-favourites {
+display: flex;
+justify-content: center;
+margin: 0 0 0 7px;
+  transition: all .5s ease;
+}
+
+.gallery__image-favourites:hover {
+  transition: all .4s ease;
+  opacity: .5;
+}

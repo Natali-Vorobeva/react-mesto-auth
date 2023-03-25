@@ -1,0 +1,17 @@
+.personal-page {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 35px;
+}
+
+@media (max-width:768px){
+  .personal-page {
+    flex-direction: column;
+  }
+}
+
+@media (max-width:425px){
+  .personal-page {
+    padding-top: 42px;
+  }
+}

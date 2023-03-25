@@ -1,0 +1,24 @@
+.personal-page__edit {
+  background-color: rgba(0, 0, 0, 0);
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.personal-page__edit:focus-visible {
+  outline-color: #000;
+  outline-style: none;
+}
+
+@media (max-width:425px){
+  .personal-page__edit {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 3px;
+    right: -30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

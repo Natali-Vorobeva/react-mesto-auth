@@ -1,0 +1,52 @@
+.personal-page__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  font-size: 40px;
+  width: 150px;
+  padding: 12px 0;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0);
+  transition: opacity .4s ease;
+  cursor: pointer;
+}
+
+.personal-page__button:hover {
+  transition: opacity .7s ease;
+  opacity: .6;
+}
+
+@media (max-width:897px){
+  .personal-page__button {
+    margin-top: 36px;
+    margin-bottom: 36px;
+  }
+}
+
+.personal-page__button:focus-visible {
+  outline-color: #000;
+  outline-style: none;
+}
+
+@media (max-width:768px){
+  .personal-page__button {
+    width: 40%;
+  }
+}
+
+@media (max-width:470px){
+  .personal-page__button {
+    width: calc(100% + (40 - 100) * ((100vw - 320px) / (1280 - 320)));
+  }
+}
+
+@media (max-width:425px){
+  .personal-page__button {
+    margin-top: 32px;
+    margin-bottom: 36px;
+    padding-bottom: 14px;
+    padding-top: 16px;
+  }
+}

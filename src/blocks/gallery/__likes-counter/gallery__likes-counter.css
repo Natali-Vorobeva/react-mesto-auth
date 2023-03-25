@@ -1,0 +1,7 @@
+.gallery__likes-counter {
+color: #000;
+display: block;
+text-align: right;
+margin-top: 3px;
+font-size: 13px;
+}

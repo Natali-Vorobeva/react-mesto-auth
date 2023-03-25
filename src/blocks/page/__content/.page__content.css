@@ -1,0 +1,31 @@
+.page__content {
+  position: relative;
+  max-width: 1280px;
+  padding: 0 200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+@media (max-width:981px){
+  .page__content {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+
+@media (max-width:981px){
+  .page__content {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+@media (max-width:425px){
+  .page__content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

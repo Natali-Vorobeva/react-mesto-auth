@@ -1,0 +1,11 @@
+.personal-page__avatar-container-overlay {
+  position: absolute;
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity .7s ease;
+}
