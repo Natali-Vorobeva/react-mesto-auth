@@ -1,0 +1,16 @@
+.header__authorization-link {
+	margin: 0;
+	align-self: center;
+	margin: 0 0 0 24px;
+	color: #a9a9a9;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 22px;
+	text-decoration: none;
+}
+@media (max-width:600px){
+	.header__authorization-link {
+		display: none;
+}
+}

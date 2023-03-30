@@ -1,0 +1,11 @@
+.header__authorization-email {
+	margin: 0;
+	align-self: center;
+	text-decoration: none;
+	}
+
+	@media (max-width:600px){
+		.header__authorization-email {
+			display: none;
+	}
+	}

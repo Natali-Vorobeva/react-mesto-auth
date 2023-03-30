@@ -1,0 +1,14 @@
+@media (min-width:600px){	
+	.header__burger {
+		display: none;		
+	}
+}
+
+@media (max-width:600px){	
+.header__burger {
+	position: relative;
+	width: 24px;
+	height: 20px;
+	align-self: center;
+}
+}

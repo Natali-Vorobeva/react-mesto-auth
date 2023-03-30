@@ -1,0 +1,10 @@
+.header__element-burger {
+	content: "";
+	background-color: rgb(249, 249, 251);
+	position: absolute;
+	width: 24px;
+	height: 3px;
+	left: 0;
+	border-radius: 2px;
+	top: 15px;
+}

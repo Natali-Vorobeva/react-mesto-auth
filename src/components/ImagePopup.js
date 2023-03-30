@@ -1,16 +1,24 @@
 import React, { useEffect } from 'react';
 import closeBtn from './../images/Close-Icon.svg';
 
-function ImagePopup({ card, onClose }) {
+function ImagePopup({ card, isImagePopupOpened, onClose }) {
 
+	// useEffect(() => {
+	// 	if (Object.keys(card).length !== 0) {
+	// 		document.addEventListener('keydown', handleEscClose)
+	// 	}
+	// 	return () => {
+	// 		document.removeEventListener('keydown', handleEscClose)
+	// 	}
+	// }, [card]);
 	useEffect(() => {
-		if (Object.keys(card).length !== 0) {
+		if (isImagePopupOpened) {
 			document.addEventListener('keydown', handleEscClose)
 		}
 		return () => {
 			document.removeEventListener('keydown', handleEscClose)
 		}
-	}, [card])
+	}, [isImagePopupOpened]);
 
 	function handleEscClose(evt) {
 		if (evt.key === 'Escape') {
@@ -25,7 +33,7 @@ function ImagePopup({ card, onClose }) {
 	}
 
 	return (
-		<div className={`popup popup_card_image ${Object.keys(card).length !== 0 ? "popup_opened" : ""}`}
+		<div className={`popup popup_card_image ${isImagePopupOpened && 'popup_opened'}`}
 		onClick={mouseDownClose}>
 			<div className="popup__container">
 				<figure className="popup__card-body">

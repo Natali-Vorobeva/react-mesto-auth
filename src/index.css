@@ -6,6 +6,20 @@
 
 @import url('./blocks/header/header.css');
 @import url('./blocks/header/__logo/header__logo.css');
+@import url('./blocks/header/__authorization/header__authorization.css');
+@import url('./blocks/header/__authorization-link/header__authorization-link.css');
+@import url('./blocks/header/__burger/header__burger.css');
+@import url('./blocks/header/__close-btn/header__close-btn.css');
+@import url('./blocks/header/__close-info/header__close-info.css');
+@import url('./blocks/header/__element-burger/header__element-burger.css');
+@import url('./blocks/header/__exit/header__exit.css');
+@import url('./blocks/header/__image-close/header__image-close.css');
+@import url('./blocks/header/__info/header__info.css');
+@import url('./blocks/header/__menu-burger/header__menu-burger.css');
+@import url('./blocks/header/__user-email/header__user-email.css');
+@import url('./blocks/header/header__authorization-email/header__authorization-email.css');
+@import url('./blocks/header-type-info/header-type-info.css');
+@import url('./blocks/inactive-header-menu/inactive-header-menu.css');
 
 @import url('./blocks/main/main.css');
 
@@ -67,28 +81,6 @@
 @import url('./blocks/loading-btn/loading-btn.css');
 @import url('./blocks/loading-btn/__img/loading-btn__img.css');
 
-.header__authorization {
-	display: flex;
-}
-
-.header__authorization-email {
-margin: 0;
-align-self: center;
-text-decoration: none;
-}
-
-
-.header__authorization-link {
-	margin: 0;
-	align-self: center;
-	margin: 0 0 0 24px;
-	color: #a9a9a9;
-	font-style: normal;
-	font-weight: 400;
-	font-size: 18px;
-	line-height: 22px;
-	text-decoration: none;
-}
 
 .register{
 	flex: 1;
@@ -193,7 +185,7 @@ text-decoration: none;
 
 @media (max-width:425px){
 	.login__form {
-		margin: 30px 0;
+		margin: 30px auto;
 	}
 }
 
@@ -236,4 +228,15 @@ text-decoration: none;
 	padding: 14px 84px;
 	margin-top: 216px;	
 	cursor: pointer;
+}
+.popup__status {
+	text-align: center;
+}
+
+.popup__text-info {
+	text-align: center;
+	font-style: normal;
+font-weight: 900;
+font-size: 24px;
+line-height: 29px;
 }

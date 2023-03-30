@@ -5,26 +5,19 @@ import * as auth from '../auth.js';
 import Header from './Header';
 import '../index.css';
 
-function Login({ onLogin }) {
+function Login({onLogin}) {
 
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-
-	//---ОБРАБОТЧИКИ---
-	function handleChangeEmail(evt) {
-		setEmail(evt.target.value);
-	}
-
-	function handleChangePassword(evt) {
-		setPassword(evt.target.value);
-	}
+	const [ values, setValues ] = useState({});
+	
+	const handleChange = (evt) => {
+    const {value, name} = evt.target;
+		console.log(evt.target);
+    setValues({...values, [name]: value });    
+  };	
 
 	function handleSubmit(evt) {
-		evt.preventDefault();
-		if (!email || !password) {
-			return;
-		}
-		onLogin(password, email);
+		evt.preventDefault();		
+		onLogin(values);
 	}
 
 	return (
@@ -47,8 +40,8 @@ function Login({ onLogin }) {
 							minLength="2"
 							maxLength="40"
 							required
-							value={email}
-							onChange={handleChangeEmail}
+							value={values.email  || ''}
+							onChange={handleChange}
 						/>
 						<span className="email-input-error login__input-error"></span>
 						<input
@@ -61,8 +54,8 @@ function Login({ onLogin }) {
 							minLength="4"
 							maxLength="10"
 							autoComplete='off'
-							value={password}
-							onChange={handleChangePassword}
+							value={values.password  || ''}
+							onChange={handleChange}
 
 						/>
 						<span className="password-input-error login__input-error"></span>

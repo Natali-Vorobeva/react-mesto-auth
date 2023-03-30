@@ -1,35 +1,52 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import incorrectly from '../../src/images/incorrectly.png';
 import correctly from '../../src/images/correctly.png';
+import closeBtn from './../images/Close-Icon.svg';
 
-export default function InfoTooltip({ name, isOpen, successfully }) {
+export default function InfoTooltip({ isOpen, onClose, success }) {
 
-	function handleSubmit(evt) {
-		evt.preventDefault();
+	useEffect(() => {
+		if (isOpen) {
+			document.addEventListener('keydown', handleEscClose)
+		}
+		return () => {
+			document.removeEventListener('keydown', handleEscClose)
+		}
+	}, [isOpen])
+
+	function handleEscClose(evt) {
+		if (evt.key === 'Escape') {
+			onClose();
+		}
 	};
 
+	function mouseDownClose(evt) {
+		if (evt.target.classList.contains('popup__container')) {
+			onClose();
+		};
+		
+	}
+
 	return (
-		<div className={`popup popup_form_${name} ${isOpen ? "popup_opened" : ""}`}
+		<div className={`popup popup_form_info ${isOpen ? "popup_opened" : ""}`}
 			onMouseDown={mouseDownClose}>
 			<div className="popup__container">
-				<div className="popup__body">
-					{successfully
-						?
-						<>
-							<div className="popup__correctly">
-								<img src={correctly} alt="Вы зарегистрированы" />
-							</div>
-							<p className="popup__registration popup__registration_type_active">Вы успешно зарегистрировались</p>
-							</>	
-						:
-						<>
-							<div class="popup__incorrectly">
-								<img src={incorrectly} alt="Что-то пошло не так!" />
-							</div>
-							<p className="popup__registration popup__registration_type_not-active">Что-то пошло не так!</p>
-							<p className="popup__registration popup__registration_type_not-active">Попробуйте ещё раз.</p>
-						</>
-					}
+
+				<div className="popup__content">
+					<div className="popup__status" >
+						<img src={success.status ? correctly : incorrectly} alt="Вы зарегистрированы" />
+					</div>
+
+					<p className="popup__text-info">
+						{success.text}
+					</p>
+					<button className="popup__close" type="button" name="button1" aria-label="Закрыть">
+						<img
+							src={closeBtn}
+							className="popup__image-close"
+							alt="Закрыть окно"
+							onClick={onClose} />
+					</button>
 				</div>
 			</div>
 		</div>
