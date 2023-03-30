@@ -48,13 +48,13 @@ function App() {
 	const [currentCards, setCurrentCards] = useState([]);
 
 	function handleLogin(values) {
+		setLoadingForMain(false);
 		const { email, password } = values;
 		auth
 			.authorize(email, password)
 			.then((res) => {
 				if (res.token) {
 					localStorage.setItem('token', res.token);
-					// setEmail('');
 					setIsLoggedIn(true);
 					navigate('/', { replace: true });
 					setEmail(email);
@@ -72,6 +72,7 @@ function App() {
 						text: res,
 					});
 				}
+				setLoadingForMain(true);
 				setOpenInfoTooltip(true);
 			})
 	}
@@ -114,6 +115,10 @@ function App() {
 					navigate('/', { replace: true })
 				})
 				.catch(console.error);
+			setLoadingForMain(true);
+		}
+		else {
+			setLoadingForMain(true);
 		}
 	};
 
@@ -224,7 +229,6 @@ function App() {
 		setConfirmationCardDeletionPopupOpened({
 			isOpen: false, card: {}
 		});
-		// setSelectedCard(card);
 		setIsImagePopupOpened(false);
 		setOpenInfoTooltip(false);
 	};
@@ -272,9 +276,7 @@ function App() {
 									element={
 										<ProtectedRoute
 											component={Main}
-											
 											cards={cards}
-											loadingForMain={loadingForMain}
 											onEditAvatar={handleEditAvatarClick}
 											onEditPersonalData={handleEditPersonalClick}
 											onAddNewCard={handleAddNewCardClick}
@@ -287,51 +289,45 @@ function App() {
 										/>
 									}
 								/>
-
-
 								<Route
 									path='*'
 									element={
 										<Navigate to='/' />}
 								/>
-
-							</Routes> 
+							</Routes>
 							:
 							<div className='loading'>
 								<img className='loading__img' src={loading} alt='Идёт загрузка' />
 							</div>
 					}
+					<ConfirmCardDeletionPopup
+						onClose={closeAllPopups}
+						card={isConfirmationCardDeletionPopupOpened.card}
+						isOpen={isConfirmationCardDeletionPopupOpened.isOpen}
+						onCardDelete={handleCardDelete}
+					/>
+					<EditProfilePopup
+						isOpen={isEditPersonalPopupOpen}
+						onClose={closeAllPopups}
+						onUpdateUser={handleUpdateUser}
+					/>
+
+					<AddPlacePopup
+						isOpen={isAddNewCard}
+						onClose={closeAllPopups}
+						onAddPlace={handleAddNewCard}
+					/>
+
+					<EditAvatarPopup
+						isOpen={isEditAvatarPopupOpen}
+						onClose={closeAllPopups}
+						onUpdateAvatar={handleUpdateAvatar}
+					/>
+
+					<ImagePopup card={selectedCard} isImagePopupOpened={isImagePopupOpened} onClose={closeAllPopups} />
+
+					<InfoTooltip isOpen={isOpenInfoTooltip} onClose={closeAllPopups} success={success} />
 				</CurrentCardContext.Provider>
-			</CurrentUserContext.Provider>
-			<CurrentUserContext.Provider value={currentUser}>
-				<ConfirmCardDeletionPopup
-					onClose={closeAllPopups}
-					card={isConfirmationCardDeletionPopupOpened.card}
-					isOpen={isConfirmationCardDeletionPopupOpened.isOpen}
-					onCardDelete={handleCardDelete}
-				/>
-				<EditProfilePopup
-					isOpen={isEditPersonalPopupOpen}
-					onClose={closeAllPopups}
-					onUpdateUser={handleUpdateUser}
-				/>
-
-				<AddPlacePopup
-					isOpen={isAddNewCard}
-					onClose={closeAllPopups}
-					onAddPlace={handleAddNewCard}
-				/>
-
-				<EditAvatarPopup
-					isOpen={isEditAvatarPopupOpen}
-					onClose={closeAllPopups}
-					onUpdateAvatar={handleUpdateAvatar}
-				/>
-
-				<ImagePopup card={selectedCard} isImagePopupOpened={isImagePopupOpened} onClose={closeAllPopups} />
-
-				<InfoTooltip isOpen={isOpenInfoTooltip} onClose={closeAllPopups} success={success} />
-
 			</CurrentUserContext.Provider>
 			<Footer />
 		</div >

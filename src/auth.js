@@ -36,21 +36,6 @@ export const authorize = (email, password) => {
 	})	
 	
 	.then(checkResponse)
-
-	// .then((res => {
-	// 	return res.json()
-	// }))
-	// .then((res) => {
-	// 	console.log(res);
-	// 	if (res.token) {
-	// 		localStorage.setItem('token', res.token);
-	// 		console.log(res.token);
-	// 		return res;
-	// 	} else {
-	// 		return;
-	// 	}
-	// })
-	// .catch(err => console.log(err))
 };
 
 export const checkToken = (token) => {
@@ -62,13 +47,5 @@ export const checkToken = (token) => {
 			'Authorization': `Bearer ${token}`,
 		}
 	})
-	// .then(res => {
-  //   if (res.ok) {
-  //     return res.json();
-  //   }
-  //   return Promise.reject(`Ошибка: ${res.status}`);
-  // })
 	.then(checkResponse)
 }
-
-

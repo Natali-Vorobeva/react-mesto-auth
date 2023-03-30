@@ -35,7 +35,7 @@ function Header({ onSignOut, email, registration, onClose, enter, exit }) {
 						onClick={handleClickCloseBtn}
 						className="header__image-close"
 						alt="Закрыть окно"
-						 />
+						/>
 				</div>
 				</div>				
 				
@@ -58,10 +58,8 @@ function Header({ onSignOut, email, registration, onClose, enter, exit }) {
 						<span className="header__element-burger">
 						</span>
 					</div>
-
 				</div>
 			</header>
-
 		</>
 	)
 }

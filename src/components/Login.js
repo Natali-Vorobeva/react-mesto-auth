@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import * as auth from '../auth.js';
-// import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import Header from './Header';
 import '../index.css';
 
@@ -59,8 +56,7 @@ function Login({onLogin}) {
 
 						/>
 						<span className="password-input-error login__input-error"></span>
-						<button className="login__button" type="submit">Войти</button>
-						{/* <Link to="/register" className="register__login-link">Войти</Link> */}
+						<button className="login__button" type="submit">Войти</button>						
 					</div>
 				</form>
 			</div>

@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
-// import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-// import * as auth from '../auth.js';
 import Header from './Header';
 import '../index.css';
 
 function Register({ onRegister }) {	
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-
-	//---ОБРАБОТЧИКИ---
+	
 	function handleChangeEmail(evt) {
 		setEmail(evt.target.value);
 	}

@@ -1,11 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import garbageBtn from './../images/garbage.svg';
 import likeBtn from './../images/favorite-black.svg';
 import dislikeBtn from './../images/add-favorites.svg';
-
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-
 
 function Card({ card, id, onCardClick, onCardLike, onCardDeleteClick }) {	
 
@@ -27,7 +24,7 @@ function Card({ card, id, onCardClick, onCardLike, onCardDeleteClick }) {
 
 	
 	return (
-		<Link className="gallery__card-body" to={`/photos/${id}`}>
+		<div className="gallery__card-body">
 			{
 			isOwn &&
 			<img src={garbageBtn} className="gallery__delete" alt="Удалить"
@@ -52,7 +49,7 @@ function Card({ card, id, onCardClick, onCardLike, onCardDeleteClick }) {
 					<p className="gallery__likes-counter">{card.likes.length}</p>					
 				</div>
 			</figcaption>
-		</Link>
+		</div>
 	)
 }
 
