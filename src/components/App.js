@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import { CurrentCardContext } from '../contexts/CurrentCardContext';
 import { api } from '../utils/Api.js';
 import * as auth from '../auth.js';
 
@@ -45,7 +44,6 @@ function App() {
 		status: false,
 		text: '',
 	});
-	const [currentCards, setCurrentCards] = useState([]);
 
 	function handleLogin(values) {
 		setLoadingForMain(false);
@@ -58,6 +56,7 @@ function App() {
 					setIsLoggedIn(true);
 					navigate('/', { replace: true });
 					setEmail(email);
+					setLoadingForMain(false);
 				}
 			})
 			.catch((res) => {
@@ -72,7 +71,7 @@ function App() {
 						text: res,
 					});
 				}
-				setLoadingForMain(true);
+				// setLoadingForMain(false);
 				setOpenInfoTooltip(true);
 			})
 	}
@@ -130,7 +129,7 @@ function App() {
 			])
 				.then(([me, cards]) => {
 					setCurrentUser(me);
-					setCurrentCards(cards);
+					setCards(cards);
 				})
 				.catch((err) => {
 					console.log(err);
@@ -144,7 +143,7 @@ function App() {
 	function handleAddNewCard(data) {
 		api.addCard(data)
 			.then(newCard => {
-				setCurrentCards([newCard, ...currentCards]);
+				setCards([newCard, ...cards]);
 				closeAllPopups();
 			})
 			.catch(err => {
@@ -158,7 +157,7 @@ function App() {
 
 		api.changeLikeCardStatus(card._id, !isLiked)
 			.then((newCard) => {
-				setCurrentCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+				setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
 			})
 			.catch((err) => {
 				console.log(`Ошибка: ${err}`);
@@ -168,7 +167,7 @@ function App() {
 	function handleCardDelete(card) {
 		api.deleteCard(card._id)
 			.then((res) => {
-				setCurrentCards(cards.filter(c => c._id !== card._id));
+				setCards(cards.filter(c => c._id !== card._id));
 				closeAllPopups()
 			})
 			.catch((err) => {
@@ -250,7 +249,6 @@ function App() {
 	return (
 		<div className="page__content">
 			<CurrentUserContext.Provider value={currentUser}>
-				<CurrentCardContext.Provider value={currentCards}>
 					{
 						loadingForMain
 							?
@@ -327,7 +325,7 @@ function App() {
 					<ImagePopup card={selectedCard} isImagePopupOpened={isImagePopupOpened} onClose={closeAllPopups} />
 
 					<InfoTooltip isOpen={isOpenInfoTooltip} onClose={closeAllPopups} success={success} />
-				</CurrentCardContext.Provider>
+				
 			</CurrentUserContext.Provider>
 			<Footer />
 		</div >

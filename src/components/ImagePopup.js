@@ -33,7 +33,7 @@ function ImagePopup({ card, isImagePopupOpened, onClose }) {
 	}
 
 	return (
-		<div className={`popup popup_card_image ${isImagePopupOpened && 'popup_opened'}`}
+		<div className={`popup popup_card_image ${isImagePopupOpened && 'popup_opened'} style-opacity`}
 		onClick={mouseDownClose}>
 			<div className="popup__container">
 				<figure className="popup__card-body">

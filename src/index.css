@@ -94,6 +94,7 @@
 @import url('./blocks/overlay-hover/overlay-hover.css');
 @import url('./blocks/input-valid-style/input-valid-style.css');
 @import url('./blocks/error-valid-style/error-valid-style.css');
+@import url('./blocks/style-opacity/style-opacity.css');
 
 @import url('./blocks/loading/loading.css');
 @import url('./blocks/loading/__img/loading__img.css');

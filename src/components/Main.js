@@ -6,12 +6,10 @@ import addBtn from './../images/add-button.svg';
 import Header from './Header';
 import Card from "./Card";
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import {CurrentCardContext} from "../contexts/CurrentCardContext.js"
 
 function Main(props) {
 	const [isHovered, setIsHovered] = useState('overlay-hover');
 	const currentUser = React.useContext(CurrentUserContext);
-	const currentCardsData = React.useContext(CurrentCardContext);
 	function toggleHover() {
 		if (isHovered) {
 			setIsHovered('');
@@ -63,7 +61,7 @@ function Main(props) {
 				</section>
 				<section className="gallery">
 					{
-						currentCardsData.map((card) => {
+						props.cards.map((card) => {
 							return <Card
 								key={card._id}
 								card={card}
