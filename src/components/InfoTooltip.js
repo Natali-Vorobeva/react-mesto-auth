@@ -34,6 +34,7 @@ export default function InfoTooltip({ isOpen, onClose, success }) {
 
 				<div className="popup__content">
 					<div className="popup__status" >
+						{/* <img src={image} alt="Вы зарегистрированы" /> */}
 						<img src={success.status ? incorrectly : correctly} alt="Вы зарегистрированы" />
 					</div>
 

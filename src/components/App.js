@@ -17,6 +17,8 @@ import ConfirmCardDeletionPopup from './ConfirmCardDeletionPopup';
 import InfoTooltip from './InfoTooltip';
 
 import loading from "./../images/loading-main.gif";
+import incorrectly from '../../src/images/incorrectly.png';
+import correctly from '../../src/images/correctly.png';
 
 function App() {
 	const [currentUser, setCurrentUser] = useState({
@@ -43,6 +45,7 @@ function App() {
 	const [success, setSuccess] = useState({
 		status: false,
 		text: '',
+		image: incorrectly
 	});
 
 	function handleLogin(values) {
@@ -71,7 +74,7 @@ function App() {
 						text: res,
 					});
 				}
-				// setLoadingForMain(false);
+				setLoadingForMain(false);
 				setOpenInfoTooltip(true);
 			})
 	}
