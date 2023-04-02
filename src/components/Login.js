@@ -8,7 +8,6 @@ function Login({onLogin}) {
 	
 	const handleChange = (evt) => {
     const {value, name} = evt.target;
-		console.log(evt.target);
     setValues({...values, [name]: value });    
   };	
 

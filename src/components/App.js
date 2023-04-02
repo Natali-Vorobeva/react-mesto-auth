@@ -16,10 +16,6 @@ import AddPlacePopup from './AddPlacePopup';
 import ConfirmCardDeletionPopup from './ConfirmCardDeletionPopup';
 import InfoTooltip from './InfoTooltip';
 
-import loading from "./../images/loading-main.gif";
-import incorrectly from '../../src/images/incorrectly.png';
-import correctly from '../../src/images/correctly.png';
-
 function App() {
 	const [currentUser, setCurrentUser] = useState({
 		"name": '',
@@ -40,6 +36,7 @@ function App() {
 		isOpen: false, card: {}
 	});
 	const [email, setEmail] = React.useState('');
+	const [isVisibilityBurger, setIsVisibilityBurger] = useState(true);
 	const [isOpenInfoTooltip, setOpenInfoTooltip] = useState(false);
 	const [success, setSuccess] = useState({
 		status: false,
@@ -55,7 +52,8 @@ function App() {
 					localStorage.setItem('token', res.token);
 					setIsLoggedIn(true);
 					navigate('/', { replace: true });
-					setEmail(email);					
+					
+					setEmail(email);
 				}
 			})
 			.catch((res) => {
@@ -77,6 +75,7 @@ function App() {
 	function handleRegister(email, password) {
 		auth.register(email, password)
 			.then(data => {
+				setIsVisibilityBurger(false);
 				if (data) {
 					setSuccess({
 						status: true,
@@ -118,7 +117,7 @@ function App() {
 	};
 
 	useEffect(() => {
-		if (isLoggedIn) {			
+		if (isLoggedIn) {
 			Promise.all([
 				api.getUserInfo(),
 				api.getInitialCards()
@@ -126,6 +125,7 @@ function App() {
 				.then(([me, cards]) => {
 					setCurrentUser(me);
 					setCards(cards);
+					setIsVisibilityBurger(true);
 				})
 				.catch((err) => {
 					console.log(err);
@@ -231,9 +231,9 @@ function App() {
 		};
 	}, [isImagePopupOpened]);
 
-
-	function handleLogOut() {
+	function handleSignOut() {
 		localStorage.removeItem('token');
+		setIsVisibilityBurger(true);
 		navigate('/sign-in', { replace: true });
 		setIsLoggedIn(false);
 		setEmail('');
@@ -241,53 +241,49 @@ function App() {
 
 	return (
 		<div className="page__content">
-			<CurrentUserContext.Provider value={currentUser}>				
-						<Routes>
-							<Route
-								exact
-								path='/sign-up'
-								element={
-									<Register onRegister={handleRegister} />
-								}
+			<CurrentUserContext.Provider value={currentUser}>
+				<Routes>
+					<Route
+						exact
+						path='/sign-up'
+						element={
+							<Register onRegister={handleRegister} />
+						}
+					/>
+					<Route
+						exact
+						path='/sign-in'
+						element={
+							<Login
+								onLogin={handleLogin}
 							/>
-							<Route
-								exact
-								path='/sign-in'
-								element={
-									<Login
-										onLogin={handleLogin}
-									/>
-								}
+						}
+					/>
+					<Route
+						path="/"
+						element={
+							<ProtectedRoute
+								component={Main}
+								cards={cards}
+								onEditAvatar={handleEditAvatarClick}
+								onEditPersonalData={handleEditPersonalClick}
+								onAddNewCard={handleAddNewCardClick}
+								onCardClick={handleCardClick}
+								onCardLike={handleCardLike}
+								onCardDeleteClick={handleOpenConfirmationCardDeletionPopup}
+								email={email}
+								onSignOut={handleSignOut}
+								isVisibilityBurger={isVisibilityBurger}
+								isLoggedIn={isLoggedIn}
 							/>
-							<Route
-								path="/"
-								element={
-									<ProtectedRoute
-										component={Main}
-										cards={cards}
-										onEditAvatar={handleEditAvatarClick}
-										onEditPersonalData={handleEditPersonalClick}
-										onAddNewCard={handleAddNewCardClick}
-										onCardClick={handleCardClick}
-										onCardLike={handleCardLike}
-										onCardDeleteClick={handleOpenConfirmationCardDeletionPopup}
-										email={email}
-										onLogOut={handleLogOut}
-										isLoggedIn={isLoggedIn}
-									/>
-								}
-							/>
-							<Route
-								path='*'
-								element={
-									<Navigate to='/' />}
-							/>
-						</Routes>
-						{/* :
-						<div className='loading'>
-							<img className='loading__img' src={loading} alt='Идёт загрузка' />
-						</div>
-				} */}
+						}
+					/>
+					<Route
+						path='*'
+						element={
+							<Navigate to='/' />}
+					/>
+				</Routes>
 				<ConfirmCardDeletionPopup
 					onClose={closeAllPopups}
 					card={isConfirmationCardDeletionPopupOpened.card}

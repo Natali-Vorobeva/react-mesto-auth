@@ -1,5 +1,12 @@
 .register__button {
-	padding: 14px 84px;
+	padding: 14px 69px;
 	margin-top: 216px;
 	cursor: pointer;
+	text-align: center;
+}
+
+@media (max-width:350px){
+	.register__button {
+	padding: 14px 35px;
+	}
 }

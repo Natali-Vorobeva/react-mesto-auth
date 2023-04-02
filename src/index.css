@@ -17,7 +17,8 @@
 @import url('./blocks/header/__info/header__info.css');
 @import url('./blocks/header/__menu-burger/header__menu-burger.css');
 @import url('./blocks/header/__user-email/header__user-email.css');
-@import url('./blocks/header/header__authorization-email/header__authorization-email.css');
+@import url('./blocks/header/__authorization-email/header__authorization-email.css');
+@import url('./blocks/header/__link-registration/header__link-registration.css');
 @import url('./blocks/header-type-info/header-type-info.css');
 @import url('./blocks/inactive-header-menu/inactive-header-menu.css');
 

@@ -8,6 +8,7 @@ import Card from "./Card";
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main(props) {
+	
 	const [isHovered, setIsHovered] = useState('overlay-hover');
 	const currentUser = React.useContext(CurrentUserContext);
 	function toggleHover() {
@@ -16,12 +17,13 @@ function Main(props) {
 		} else {
 			setIsHovered('overlay-hover');
 		}
-	}
+	}	
 
 	return (
 		<>
 			<Header
-				onLogOut={props.onLogOut}
+				isVisibilityBurger={props.isVisibilityBurger}
+				onSignOut={props.onSignOut}
 				exit={"Выйти"}
 				email={props.email}
 			/>
